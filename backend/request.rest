@@ -1,0 +1,42 @@
+GET http://localhost:5000/users
+
+###
+GET http://localhost:5000/users/ad2ad06c-f171-4d74-9699-18711a40bb81
+
+###
+# Update user
+PUT  http://localhost:5000/users/1e6b9794-bba1-4e4c-a6cf-cefd99e1c6fb
+Content-Type: application/json
+
+{
+    "name": "Angga Saputra",
+    "email": "admin@gmail.com",
+    "password": "admin123",
+    "role": "admin"
+}
+
+###
+# Delete user
+DELETE http://localhost:5000/users/04afb734-94bf-42d9-a6b7-f98382faad99
+
+###
+# register user
+POST http://localhost:5000/register/
+Content-Type: application/json
+
+{
+    "name": "Angga Saputra",
+    "email": "test@gmail.com",
+    "password": "admin123",
+    "confirmPassword": "admin123"
+}
+
+###
+# login user
+POST http://localhost:5000/login/
+Content-Type: application/json
+
+{
+    "email": "test@gmail.com",
+    "password": "admin123"
+}

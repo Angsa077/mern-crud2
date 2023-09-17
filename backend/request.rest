@@ -1,7 +1,9 @@
-GET http://localhost:5000/users
+GET http://localhost:5000/users/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxNTRiMWE0ZC1lNTY1LTRkY2UtYTQyOS1hMDI2NDY3MDJmMjYiLCJpYXQiOjE2OTQ5ODMzMTksImV4cCI6MTY5NDk4NDIxOX0.GfiUkl4I0xv5J6qMK0xBq8ea12fHUntJ2LQQ3on48VQ
 
 ###
 GET http://localhost:5000/users/ad2ad06c-f171-4d74-9699-18711a40bb81
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI3OTkwMTM5OC03MDQzLTQ3NDQtYTM5OC1kNGQ0NGExMzI0ZTMiLCJpYXQiOjE2OTQ5Mjk0MTYsImV4cCI6MTY5NDkzMzAxNn0.N-1KmrPdA1WqqM_1Ho0XqnMBKUc352TDzrz6UBqbbwE
 
 ###
 # Update user
@@ -26,17 +28,17 @@ Content-Type: application/json
 
 {
     "name": "Angga Saputra",
-    "email": "test@gmail.com",
+    "email": "admin@gmail.com",
     "password": "admin123",
     "confirmPassword": "admin123"
 }
 
 ###
 # login user
-POST http://localhost:5000/login/
+POST http://localhost:5000/login
 Content-Type: application/json
 
 {
-    "email": "test@gmail.com",
+    "email": "admin@gmail.com",
     "password": "admin123"
 }

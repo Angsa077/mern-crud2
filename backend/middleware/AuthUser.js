@@ -5,16 +5,18 @@ const prisma = new PrismaClient();
 
 const verifyUser = async (req, res, next) => {
     try {
-        // Mendapatkan token dari header permintaan
-        const token = req.header('Authorization');
-
-        // Memeriksa apakah token ada
-        if (!token) {
-            return res.status(401).json({ error: 'Silahkan login terlebih dahulu' });
+        // Mendapatkan token dari header permintaan dengan metode "Bearer"
+        const authorizationHeader = req.header('Authorization');
+        
+        if (!authorizationHeader || !authorizationHeader.startsWith('Bearer ')) {
+            return res.status(401).json({ error: 'Silakan masukkan token Bearer' });
         }
 
+        // Mengambil token dari header
+        const token = authorizationHeader.split(' ')[1];
+
         // Verifikasi token
-        const decoded = jwt.verify(token, process.env.SECRET_KEY);
+        const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
 
         // Mengambil ID pengguna dari payload token
         const userId = decoded.userId;

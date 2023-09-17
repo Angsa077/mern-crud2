@@ -64,9 +64,15 @@ const loginUser = async (req, res) => {
             return res.status(401).json({ msg: "Email atau password salah" });
         }
 
-        const token = jwt.sign({ userId: user.id }, process.env.SECRET_KEY, { expiresIn: '1h' });
+        const accessToken = jwt.sign({ userId: user.id }, process.env.ACCESS_TOKEN_SECRET, {
+            expiresIn: '15m', 
+        });
 
-        res.status(200).json({ token });
+        const refreshToken = jwt.sign({ userId: user.id }, process.env.REFRESH_TOKEN_SECRET, {
+            expiresIn: '7d', 
+        });
+
+        res.json({ accessToken, refreshToken });
     } catch (error) {
         res.status(500).json({ msg: error.message });
     }
